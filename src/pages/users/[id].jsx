@@ -3,9 +3,13 @@ import { getUser } from "./[id].data";
 import { createEffect, createResource, createSignal } from "solid-js";
 
 
-export default async function Users(props) {
+export default function Users(props) {
   console.log('props',props)
-  const a = props.data.then((data) => console.log('data',data.result))
+  // const a = props.data.then((data) => console.log('data',data.result))
+  const b = createAsync(() => props.data)
+  createEffect(() => {  
+    console.log('b',b())
+  })
   return (
     <>
       <h1>User</h1>
